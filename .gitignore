@@ -26,3 +26,15 @@
 *.exe
 *.out
 *.app
+
+*.user
+
+Builds/CMake/Makefile
+Builds/CMake/CMakeCache.txt
+
+
+bin/.qmake.stash
+
+bin/Makefile
+
+*.user
