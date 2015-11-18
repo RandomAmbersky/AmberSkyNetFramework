@@ -38,3 +38,5 @@ bin/.qmake.stash
 bin/Makefile
 
 *.user
+
+bin/AmberSkyNetFramework
