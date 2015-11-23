@@ -1,4 +1,5 @@
-include ( AmberSkyNet.pri )
+#include ( AmberSkyNet.pri )
+include (../../AmberSkyNet/Artemis-CPP/QtCreator/ArtemisCpp.pri )
 
 QT -= core
 QT -= gui

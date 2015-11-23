@@ -1,11 +1,6 @@
-#include <iostream>
-#include <typeinfo>
+#include "Artemis.h"
 
-using namespace std;
-
-#include "asn.h"
-
-class VelocityComponent : public rComponent {
+class VelocityComponent : public artemis::Component {
 public:
     float velocityX;
     float velocityY;
@@ -14,10 +9,10 @@ public:
     {
         this->velocityX = velocityX;
         this->velocityY = velocityY;
-    }
+    };
 };
 
-class PositionComponent : public rComponent
+class PositionComponent : public artemis::Component
 {
 
 public:
@@ -27,13 +22,12 @@ public:
     {
         this->posX = posX;
         this->posY = posY;
-    }
+    };
 };
 
-/*
-class MovementSystem : public rEntitySystem {
+class MovementSystem : public artemis::EntityProcessingSystem {
 private:
-    artemis::ComponentMapper<MovementComponent> velocityMapper;
+    artemis::ComponentMapper<VelocityComponent> velocityMapper;
     artemis::ComponentMapper<PositionComponent> positionMapper;
 
 public:
@@ -53,40 +47,35 @@ public:
     };
 
 };
-*/
 
-class MovementSystem : public rSystem {
-
-public:
-    MovementSystem() {
-
-    }
-
-    virtual void processEntity(rEntity* e) {
-        //positionMapper.get(e)->posX += velocityMapper.get(e)->velocityX * world->getDelta();
-        //positionMapper.get(e)->posY += velocityMapper.get(e)->velocityY * world->getDelta();
-    }
-
-};
-
-int main()
+int main(int argc, char *argv[])
 {
+    artemis::World world;
 
-    rApplication* app = new rApplication();
+        artemis::SystemManager * sm = world.getSystemManager();
+        MovementSystem * movementsys = (MovementSystem*)sm->setSystem(new MovementSystem());
+        artemis::EntityManager * em = world.getEntityManager();
 
-    app->addSystem( new MovementSystem() );
+        sm->initializeAll();
 
-    app->getComponentManager()->getTypeId(typeid(VelocityComponent));
-    app->getComponentManager()->getTypeId(typeid(PositionComponent));
+        artemis::Entity & player = em->create();
 
-    rEntity* e = app->createEntity();
-    e->addComponent( new VelocityComponent(10,10) );
-    e->addComponent( new PositionComponent(1,1) );
-    e->refresh();
+        player.addComponent(new VelocityComponent(2,4));
+        player.addComponent(new PositionComponent(0,0));
+        player.refresh();
 
-    cout << "Hello World!" << endl;
+        PositionComponent * comp = (PositionComponent*)player.getComponent<PositionComponent>();
 
-    delete app;
+        while(true){
+
+            world.loopStart();
+            world.setDelta(0.0016f);
+            movementsys->process();
+
+            std::cout << "X:"<< comp->posX << std::endl;
+            std::cout << "Y:"<< comp->posY << std::endl;
+            //sleep(160);
+        }
 
     return 0;
 }
