@@ -1,3 +1,4 @@
+#include "asn.h"
 #include "Artemis.h"
 
 class VelocityComponent : public artemis::Component {
@@ -48,8 +49,10 @@ public:
 
 };
 
-int main(int argc, char *argv[])
+//int main(int argc, char *argv[])
+int main(int , char *[])
 {
+/*
     artemis::World world;
 
         artemis::SystemManager * sm = world.getSystemManager();
@@ -76,6 +79,31 @@ int main(int argc, char *argv[])
             std::cout << "Y:"<< comp->posY << std::endl;
             //sleep(160);
         }
+*/
+    rApplication* app = new rApplication;
+
+    MovementSystem* movementsys = (MovementSystem*)app->addSystem( new MovementSystem() );
+
+    app->init();
+
+    artemis::Entity & player = app->newEntity();
+    player.addComponent(new VelocityComponent(2,4));
+    player.addComponent(new PositionComponent(0,0));
+    player.refresh();
+
+    PositionComponent* comp = (PositionComponent*)player.getComponent<PositionComponent>();
+
+    artemis::World & world = app->getWorld();
+
+    while(true){
+
+        app->step( 0.0016f );
+        //movementsys->process();
+
+        std::cout << "X:"<< comp->posX << std::endl;
+        std::cout << "Y:"<< comp->posY << std::endl;
+
+    }
 
     return 0;
 }
