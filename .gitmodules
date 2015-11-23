@@ -1,0 +1,3 @@
+[submodule "AmberSkyNet/Artemis-CPP"]
+	path = AmberSkyNet/Artemis-CPP
+	url = https://github.com/RandomAmbersky/Artemis-Cpp.git
