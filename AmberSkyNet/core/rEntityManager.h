@@ -1,9 +1,10 @@
 #ifndef RENTITYMANAGER_H
 #define RENTITYMANAGER_H
 
+#include "rBase.h"
+
 class rEntity;
 class rComponent;
-class rComponentType;
 
 class rEntityManager
 {
@@ -12,8 +13,8 @@ public:
     rEntity* create();
 
     void addComponent(rEntity* e, rComponent* c);
-    void removeComponent(rEntity* e, rComponentType & type);
-    rComponent* getComponent(rEntity* e, rComponentType & type);
+    void removeComponent(rEntity* e, asnComponentType type);
+    rComponent* getComponent(rEntity* e, asnComponentType type);
 
 private:
     int _nextAvailableId;

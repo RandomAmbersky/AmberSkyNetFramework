@@ -1,12 +1,12 @@
 #ifndef RENTITY_H
 #define RENTITY_H
 
+#include "rBase.h"
+
 #include <bitset>
 #include "BitSize.h"
 
-class rComponentType;
 class rComponent;
-
 class rEntityManager;
 
 class rEntity
@@ -16,8 +16,8 @@ public:
     ~rEntity();
 
     void addComponent(rComponent* c);
-    void removeComponent(rComponentType & type);
-    rComponent* getComponent(rComponentType & type);
+    void removeComponent(asnComponentType type);
+    rComponent* getComponent(asnComponentType type);
 
     void refresh();
 

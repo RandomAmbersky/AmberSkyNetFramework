@@ -22,4 +22,5 @@ HEADERS += \
     $$PWD/../../AmberSkyNet/core/rEntityManager.h \
     $$PWD/../../AmberSkyNet/core/rApplication.h \
     $$PWD/../../AmberSkyNet/core/rComponentManager.h \
-    $$PWD/../../AmberSkyNet/core/rComponentType.h
+    $$PWD/../../AmberSkyNet/core/rComponentType.h \
+    $$PWD/../../AmberSkyNet/core/rBase.h

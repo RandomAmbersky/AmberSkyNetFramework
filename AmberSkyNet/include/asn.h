@@ -3,6 +3,7 @@
 
 // inspired of https://github.com/vinova/Artemis-Cpp/  :)))
 
+#include "core/rBase.h"
 #include "core/rEntityManager.h"
 #include "core/rSystemManager.h"
 #include "core/rComponentManager.h"

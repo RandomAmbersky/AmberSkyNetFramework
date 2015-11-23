@@ -27,12 +27,12 @@ void rEntityManager::addComponent(rEntity *e, rComponent *c)
 
 }
 
-void rEntityManager::removeComponent(rEntity *e, rComponentType &type)
+void rEntityManager::removeComponent(rEntity *e, asnComponentType type)
 {
 
 }
 
-rComponent *rEntityManager::getComponent(rEntity *e, rComponentType &type)
+rComponent *rEntityManager::getComponent(rEntity *e, asnComponentType type)
 {
 
 }
