@@ -1,3 +1,3 @@
-[submodule "AmberSkyNet/Artemis-CPP"]
-	path = AmberSkyNet/Artemis-CPP
-	url = https://github.com/RandomAmbersky/Artemis-Cpp.git
+[submodule "AmberSkyNet/Artemis-Cpp"]
+	path = AmberSkyNet/Artemis-Cpp
+	url = https://github.com/RandomAmbersky/Artemis-Cpp
