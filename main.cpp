@@ -52,38 +52,10 @@ public:
 //int main(int argc, char *argv[])
 int main(int , char *[])
 {
-/*
-    artemis::World world;
 
-        artemis::SystemManager * sm = world.getSystemManager();
-        MovementSystem * movementsys = (MovementSystem*)sm->setSystem(new MovementSystem());
-        artemis::EntityManager * em = world.getEntityManager();
-
-        sm->initializeAll();
-
-        artemis::Entity & player = em->create();
-
-        player.addComponent(new VelocityComponent(2,4));
-        player.addComponent(new PositionComponent(0,0));
-        player.refresh();
-
-        PositionComponent * comp = (PositionComponent*)player.getComponent<PositionComponent>();
-
-        while(true){
-
-            world.loopStart();
-            world.setDelta(0.0016f);
-            movementsys->process();
-
-            std::cout << "X:"<< comp->posX << std::endl;
-            std::cout << "Y:"<< comp->posY << std::endl;
-            //sleep(160);
-        }
-*/
     rApplication* app = new rApplication;
 
-    MovementSystem* movementsys = (MovementSystem*)app->addSystem( new MovementSystem() );
-
+    app->addSystem( new MovementSystem() );
     app->init();
 
     artemis::Entity & player = app->newEntity();
@@ -93,12 +65,9 @@ int main(int , char *[])
 
     PositionComponent* comp = (PositionComponent*)player.getComponent<PositionComponent>();
 
-    artemis::World & world = app->getWorld();
-
     while(true){
 
         app->step( 0.0016f );
-        //movementsys->process();
 
         std::cout << "X:"<< comp->posX << std::endl;
         std::cout << "Y:"<< comp->posY << std::endl;

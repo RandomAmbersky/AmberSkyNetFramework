@@ -46,4 +46,10 @@ void rApplication::step(float dt)
    _world.loopStart();
    _world.setDelta(dt);
 
+   artemis::Bag<artemis::EntitySystem*> & bagged = _world.getSystemManager()->getSystems();
+
+   for(int i=0; i< bagged.getCount(); i++) {
+       bagged.get(i)->process();
+       }
+
 }

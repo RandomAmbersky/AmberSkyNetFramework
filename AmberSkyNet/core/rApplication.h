@@ -17,11 +17,10 @@ public:
     void loop();
     void stop();
 
-    artemis::World & getWorld();
-
     void step( float dt );
 
 private:
+   artemis::World & getWorld();
    artemis::World _world;
    std::list<artemis::EntitySystem*> _sys;
 };
