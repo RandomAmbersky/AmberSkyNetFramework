@@ -22,17 +22,20 @@ rComponentManager::~rComponentManager()
 long rComponentManager::getTypeId(const std::type_info &c)
 {
 
-    rComponentType* my_type = _componentTypes.find(&c)->second;
+    rComponentType* my_type;
+    std::map<const std::type_info*, rComponentType*>::iterator it = _componentTypes.find(&c);
 
-    if(my_type == NULL) {
+    if ( it == _componentTypes.end() )
+    {
         my_type = new rComponentType();
         my_type->bit = _next_bit;
         _next_bit = _next_bit << 1;
         my_type->id = _next_id++;
         _componentTypes[&c] = my_type;
     }
+    else my_type = it->second;
 
-    //std::cout << "create component" << &c << " " << my_type->id << std::endl;
+    std::cout << "create component" << &c << " " << my_type->id << std::endl;
     return my_type->id;
 }
 

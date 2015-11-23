@@ -14,10 +14,10 @@ public:
     ~rApplication();
     rEntityManager* getEntityManager();
     rSystemManager* getSystemManager();
-    rComponentManager* getComponentManager();
     rEntity* createEntity();
     void addSystem( rSystem* s );
 private:
+    rComponentManager* getComponentManager();
     rEntityManager* _e_manager;
     rSystemManager* _s_manager;
     rComponentManager *_c_manager;

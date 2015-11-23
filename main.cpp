@@ -75,10 +75,13 @@ int main()
     rApplication* app = new rApplication();
 
     app->addSystem( new MovementSystem() );
-
+/*
     app->getComponentManager()->getTypeId(typeid(VelocityComponent));
     app->getComponentManager()->getTypeId(typeid(PositionComponent));
 
+    app->getComponentManager()->getTypeId(typeid(VelocityComponent));
+    app->getComponentManager()->getTypeId(typeid(PositionComponent));
+*/
     rEntity* e = app->createEntity();
     e->addComponent( new VelocityComponent(10,10) );
     e->addComponent( new PositionComponent(1,1) );
