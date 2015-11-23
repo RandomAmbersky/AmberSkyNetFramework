@@ -40,3 +40,6 @@ bin/Makefile
 *.user
 
 bin/AmberSkyNetFramework
+AmberSkyNetFramework
+*.stash
+Makefile
